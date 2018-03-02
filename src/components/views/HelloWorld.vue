@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import LoginForm from './authentication/LoginForm'
+import LoginForm from '../authentication/LoginForm'
 
 export default {
   name: 'HelloWorld',
