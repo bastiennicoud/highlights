@@ -1,25 +1,33 @@
 <template>
-  <nav class="navbar">
+  <nav class="navbar is-light">
     <div class="container">
 
       <div class="navbar-brand">
-        <a class="navbar-item">
+        <router-link
+          :to="{ name: 'Home' }"
+          class="navbar-item">
           <img
-            src="static/img/buefy-logo.png"
-            alt="Buefy">
-        </a>
+            src="https://bulma.io/images/bulma-logo.png"
+            width="112"
+            height="28">
+        </router-link>
       </div>
 
-      <div class="navbar-menu">
+      <div class="navbar-menu is-active">
+
         <div class="navbar-end">
+          <router-link
+            :to="{ name: 'Login' }"
+            class="navbar-item">
+            Login
+          </router-link>
+
           <b-dropdown
-            v-model="navigation"
             position="is-bottom-left">
             <a
               slot="trigger"
-              class="navbar-item">
+              class="navbar-item navbar-link">
               <span>Menu</span>
-              <b-icon icon="menu-down"/>
             </a>
 
             <b-dropdown-item custom>
@@ -60,6 +68,7 @@
             </b-dropdown-item>
           </b-dropdown>
         </div>
+
       </div>
 
     </div>
