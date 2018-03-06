@@ -26,7 +26,7 @@
               <div class="card-content">
                 <b-field>
                   <b-input
-                    v-model="email"
+                    v-model="loginDatas.email"
                     type="email"
                     size="is-medium"
                     maxlength="40"
@@ -36,7 +36,7 @@
                 </b-field>
                 <b-field>
                   <b-input
-                    v-model="password"
+                    v-model="loginDatas.password"
                     type="password"
                     size="is-medium"
                     icon="lock-open"
@@ -74,26 +74,24 @@
 </template>
 
 <script>
-import firebase from 'firebase'
-
 export default {
   name: 'Login',
   data () {
     return {
-      email: '',
-      password: ''
+      loginDatas: {
+        email: '',
+        password: ''
+      }
     }
   },
   methods: {
     signIn () {
-      firebase.auth().signInWithEmailAndPassword(this.email, this.password)
-        .then(function (user) {
-          console.log(user)
-        })
-        .catch(function (error) {
-          console.log(error.message)
-          this.danger(error.message)
-        })
+      this.$store.dispatch('user/login', {
+        email: this.loginDatas.email,
+        pass: this.loginDatas.password
+      }).then((user) => {
+        this.$toast.open({message: `Correctement connecté`})
+      })
     },
     danger (msg) {
       this.$toast.open({

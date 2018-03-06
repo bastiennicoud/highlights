@@ -7,16 +7,9 @@ import store from './store'
 
 import VueFire from 'vuefire'
 import firebase from 'firebase'
+import fireConfig from './fireConfig'
 
-let config = {
-  apiKey: 'AIzaSyCw68hpwe2dRyhDnnEpFT1MMaNUSElLlfU',
-  authDomain: 'highlights-api.firebaseapp.com',
-  databaseURL: 'https://highlights-api.firebaseio.com',
-  projectId: 'highlights-api',
-  storageBucket: 'highlights-api.appspot.com',
-  messagingSenderId: '152327037633'
-}
-firebase.initializeApp(config)
+firebase.initializeApp(fireConfig)
 
 Vue.config.productionTip = false
 

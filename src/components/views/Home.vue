@@ -12,6 +12,7 @@
         </div>
       </div>
     </section>
+
     <section class="section">
       <b-field grouped>
         <b-input
@@ -29,22 +30,19 @@
         </p>
       </b-field>
     </section>
+
     <section class="section">
-      <div
+      <!-- <div
         v-for="comment in comments"
         :key="comment['.key']">
         <p><strong>{{ comment.name }}</strong></p>
         <p>{{ comment.content }}</p>
-      </div>
+      </div> -->
     </section>
   </div>
 </template>
 
 <script>
-import firebase from 'firebase'
-
-let commentsRef = firebase.database().ref('comments')
-
 export default {
   name: 'Home',
   data () {
@@ -55,12 +53,8 @@ export default {
       }
     }
   },
-  firebase: {
-    comments: commentsRef
-  },
   methods: {
     addComment () {
-      commentsRef.push(this.newComment)
       this.newComment.name = ''
       this.newComment.content = ''
     }
