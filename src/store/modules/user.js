@@ -43,17 +43,25 @@ export default {
     }
   },
   actions: {
+    /**
+     * Login the user in firebase with email and pass
+     * This method don't verify the consitency of the datas
+     * @param { dispatch, commit } context Auto injected by vuex, we use the ES2015 argument destructuring
+     * @param { email, pass } playload Datas required for the user login
+     */
     login ({ dispatch, commit }, { email, pass }) {
       return new Promise((resolve, reject) => {
-        firebase.auth().signInWithEmailAndPassword(email, pass).then(
-          function (user) {
-            commit('CONNECT')
-            resolve(user)
-          },
-          function (err) {
-            reject(err)
-          }
-        )
+        firebase.auth().signInWithEmailAndPassword(email, pass)
+          .then(
+            function (user) {
+              commit('CONNECT')
+              resolve(user)
+            }
+          ).catch(
+            function (err) {
+              reject(err)
+            }
+          )
       })
     },
     fetchUser ({ state, commit, rootState }) {
